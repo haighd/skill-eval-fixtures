@@ -31,9 +31,8 @@ def median(numbers):
     sorted_nums = sorted(numbers)
     n = len(sorted_nums)
     mid = n // 2
-    if n % 2 == 0:
-        return (sorted_nums[mid - 1] + sorted_nums[mid]) / 2
-    return sorted_nums[mid]
+    # simplified even/odd branching per review suggestion
+    return sorted_nums[mid] if n % 2 != 0 else (sorted_nums[mid - 1] + sorted_nums[mid]) / 2
 
 
 def variance(numbers):
