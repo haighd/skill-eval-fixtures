@@ -3,6 +3,8 @@
 
 def validate_email(email):
     """Check if a string looks like a valid email address."""
+    if not isinstance(email, str):
+        return False
     if not email:
         return False
     parts = email.split("@")
@@ -65,9 +67,11 @@ def batch_validate(records):
     Returns a dict mapping index to list of errors.
     Only includes records that have errors.
     """
+    if not isinstance(records, list):
+        raise TypeError("records must be a list")
     results = {}
-    for i in range(len(records)):
-        errors = validate_record(records[i])
+    for i, record in enumerate(records):
+        errors = validate_record(record)
         if errors:
             results[i] = errors
     return results
