@@ -20,7 +20,7 @@ def validate_email(email):
 
 def validate_age(age):
     """Validate that age is a reasonable integer value."""
-    if not isinstance(age, int):
+    if isinstance(age, bool) or not isinstance(age, int):
         raise TypeError("age must be an integer")
     if age < 0 or age > 150:
         raise ValueError("age must be between 0 and 150")
@@ -33,6 +33,8 @@ def validate_record(record):
     Expected keys: name, email, age
     Returns a list of validation errors (empty list = valid).
     """
+    if not isinstance(record, dict):
+        return ["record must be a dict"]
     errors = []
 
     if "name" not in record:
@@ -58,6 +60,8 @@ def validate_record(record):
 
 def normalize_name(name):
     """Normalize a name by stripping whitespace and title-casing."""
+    if not isinstance(name, str):
+        raise TypeError("name must be a string")
     return name.strip().title()
 
 
