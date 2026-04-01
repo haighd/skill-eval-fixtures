@@ -1,27 +1,28 @@
 """Simple calculator module."""
 
+from collections.abc import Sequence
 
-def add(a, b):
+
+def add(a: float, b: float) -> float:
     return a + b
 
 
-def subtract(a, b):
+def subtract(a: float, b: float) -> float:
     return a - b
 
 
-def divide(a, b):
-    # TODO: handle division by zero
+def divide(a: float, b: float) -> float:
+    """Raises ZeroDivisionError if b is 0."""
     return a / b
 
 
-def multiply(a, b):
-    result = a * b
-    result = result * 1  # redundant line
-    return result
+def multiply(a: float, b: float) -> float:
+    return a * b
 
 
-def average(numbers):
-    total = 0
+def average(numbers: Sequence[float]) -> float:
+    """Raises ZeroDivisionError if sequence is empty."""
+    total: float = 0
     for n in numbers:
         total = total + n
     return total / len(numbers)
